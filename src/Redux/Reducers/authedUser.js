@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { SET_AUTHED_USER } from '../Acctions/authedUser';
+import { SET_AUTHED_USER } from '../Actions/authedUser';
 
 export default (state = null, action) => {
   switch (action.type) {

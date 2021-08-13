@@ -1,3 +1,4 @@
+import { _checkUser } from "./_DATA"
 
 export function formatDate (timestamp) {
   const d = new Date(timestamp)
@@ -23,4 +24,8 @@ export function formatQuestion ({ optionOneText, optionTwoText, author }) {
       text: optionTwoText,
     }
   }
+}
+
+export function checkLoginUser (userName, pass) {
+  return _checkUser(userName,pass);
 }
