@@ -1,0 +1,77 @@
+$headerHeight: 50px;
+$cardHeight: 300px;
+
+.question-card {
+  display: flex;
+  flex-direction: column;
+  height: $cardHeight;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid #aaa;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 10px;
+  .card__header {
+    text-align-last: left;
+    height: $headerHeight;
+    align-self: center;
+    width: 100%;
+    background-color: rgb(235, 235, 235);
+    padding: 1rem;
+  }
+  .card__body {
+    width: 100%;
+    height: $cardHeight - $headerHeight; //to expand to fill remaining height
+    display: flex;
+    flex: 4;
+    flex-flow: row nowrap;
+    .card__avatar {
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      .avatar__img {
+        width: 130px;
+        width: 130px;
+        min-width: 130px;
+        min-width: 130px;
+        border-radius: 100%;
+        border: 5px solid $MaterialUiPrimaryColor;
+        transition: all 200ms ease-in-out;
+        cursor: pointer;
+        &:hover {
+          border-color: lighten($MaterialUiPrimaryColor, 20%);
+        }
+      }
+    }
+
+    .card__info {
+      text-align-last: left;
+      font-size: 1rem;
+      flex: 3;
+      position: relative;
+
+      .card__heading {
+        font-size: 3rem;
+        font-weight: 500;
+      }
+      .card__question {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        .card__Or-separator {
+          font-weight: 900;
+          font-size: 2.5rem;
+          color: $MaterialUiSecondaryColor;
+        }
+      }
+
+      .btn {
+        text-align: center;
+        width: 80%;
+        margin: 0;
+        font-size: 2rem;
+      }
+    }
+  }
+}

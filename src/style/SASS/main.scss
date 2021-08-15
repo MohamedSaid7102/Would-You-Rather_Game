@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,700;1,500&display=swap');
+@import './globals';
 @import './login';
+@import './dashBoard';
 
 body,
 html {
@@ -11,9 +13,16 @@ body {
   font-weight: normal;
   font-size: 2.5rem;
 }
+
 .loading-icon {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.component-wrapper {
+  max-width: 1300px;
+  margin: auto;
+  padding: 1rem;
 }

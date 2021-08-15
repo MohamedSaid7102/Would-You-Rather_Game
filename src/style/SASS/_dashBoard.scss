@@ -1,0 +1,68 @@
+.questions-dashboard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 15px;
+  padding: 1rem;
+  margin: auto;
+  max-width: 800px;
+
+  .dashboard__navigation {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    row-gap: 1rem;
+    column-gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 3rem;
+
+    @media screen and (max-width: 550px) {
+      & {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  .dashboard__questions {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn {
+    text-transform: capitalize;
+    width: 100%;
+    white-space: pre-wrap;
+    height: max-content;
+    transition: all 200ms ease-in-out;
+    margin: auto;
+    display: table;
+  }
+
+  .btn--primary {
+    &:hover {
+      background-color: $MaterialUiPrimaryColor;
+    }
+  }
+  .btn--secondary {
+    &:hover {
+      background-color: $MaterialUiSecondaryColor;
+    }
+  }
+
+  .btn--lg-2-x {
+    font-size: 2rem;
+  }
+
+  .btn--lg-1_5x {
+    font-size: 1.5rem;
+  }
+}
+
+// we imported this at the end due to it will use some of the above style rules
+@import './question';
