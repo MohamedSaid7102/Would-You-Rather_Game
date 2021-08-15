@@ -3,6 +3,7 @@ import { handleInitialData } from './Redux/Actions/shared';
 import { connect } from 'react-redux';
 import Login from './Components/Login';
 import Loader from './loader';
+import Dashboard from './Components/Dashboard';
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
@@ -17,7 +18,8 @@ class App extends React.Component {
             <Loader></Loader>
           </div>
         ) : (
-          <Login />
+          // <Login />
+          <Dashboard />
         )}
       </div>
     );
