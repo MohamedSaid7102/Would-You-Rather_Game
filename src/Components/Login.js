@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { checkLoginUser } from '../utils/helpers';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../Redux/Actions/authedUser';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
   state = {
@@ -31,6 +32,8 @@ class Login extends Component {
     }
   };
   render() {
+    // TODO: add loading effect when login in and the user is authed & show error messege if the user is not authed
+    if (this.state.authed) return <Redirect path="/" />;
     return (
       <div className="login-container">
         <h1 className="login__header">Login</h1>

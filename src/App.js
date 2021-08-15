@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Login from './Components/Login';
 import Loader from './loader';
 import Dashboard from './Components/Dashboard';
+import { Route } from 'react-router';
+
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
@@ -18,8 +20,10 @@ class App extends React.Component {
             <Loader></Loader>
           </div>
         ) : (
-          // <Login />
-          <Dashboard />
+          <React.Fragment>
+            <Route path="/login" component={Login} />
+            <Route path="/" exact component={Dashboard} />
+          </React.Fragment>
         )}
       </div>
     );
