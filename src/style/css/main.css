@@ -73,11 +73,21 @@
 .questions-dashboard .btn--secondary:hover {
   background-color: #f50057;
 }
+.questions-dashboard .btn--accent {
+  background-color: #268f26;
+}
+.questions-dashboard .btn--accent:hover {
+  background-color: #4ccf4c;
+}
 .questions-dashboard .btn--lg-2-x {
   font-size: 2rem;
 }
 .questions-dashboard .btn--lg-1_5x {
   font-size: 1.5rem;
+}
+.questions-dashboard .currentActiveSection {
+  background-color: #aaa;
+  color: #fff;
 }
 
 .question-card {
@@ -201,6 +211,21 @@
     min-width: 50px;
     min-height: 50px;
   }
+}
+
+.question-card.answer {
+  max-width: 700px;
+  margin: auto;
+  margin-top: 10rem;
+}
+.question-card.answer .btn--accent {
+  background-color: #268f26;
+}
+.question-card.answer .btn--accent:hover {
+  background-color: #4ccf4c;
+}
+.question-card.answer .MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
+  font-size: 2rem;
 }
 
 body,

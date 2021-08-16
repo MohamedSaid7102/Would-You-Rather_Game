@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import Question from './Question';
+import Question from './QuestionsForm/Question';
 
 // to avoid typos bugs
 export const unAnswered = 'unAnswered';
@@ -13,10 +13,6 @@ class Dashboard extends Component {
 
   render() {
     const { authedUser, answeredQuestions, unAnsweredQuestions } = this.props;
-    console.log(authedUser, 'answered questions: ', answeredQuestions);
-    console.log(`---------------------`);
-    console.log(authedUser, 'unanswered questions: ', unAnsweredQuestions);
-
     return (
       <div className="component-wrapper">
         <div className="questions-dashboard">
@@ -24,7 +20,11 @@ class Dashboard extends Component {
             <Button
               variant="outlined"
               color="primary"
-              className="btn btn--lg-2-x btn--primary"
+              className={`btn btn--lg-2-x btn--primary ${
+                this.state.currentViewedSection === answered
+                  ? 'currentActiveSection'
+                  : ''
+              }`}
               onClick={() => this.setState({ currentViewedSection: answered })}
             >
               Answered Questions
@@ -32,7 +32,11 @@ class Dashboard extends Component {
             <Button
               variant="outlined"
               color="primary"
-              className="btn btn--lg-2-x btn--primary"
+              className={`btn btn--lg-2-x btn--primary ${
+                this.state.currentViewedSection === unAnswered
+                  ? 'currentActiveSection'
+                  : ''
+              }`}
               onClick={() =>
                 this.setState({ currentViewedSection: unAnswered })
               }
@@ -41,13 +45,25 @@ class Dashboard extends Component {
             </Button>
           </div>
           <div className="dashboard__questions">
-            {this.state.currentViewedSection === unAnswered
-              ? unAnsweredQuestions.map((question) => (
+            {this.state.currentViewedSection === unAnswered ? (
+              unAnsweredQuestions.length !== 0 ? (
+                unAnsweredQuestions.map((question) => (
                   <Question key={question.id} question={question} />
                 ))
-              : answeredQuestions.map((question) => (
-                  <Question key={question.id} question={question} />
-                ))}
+              ) : (
+                <center>
+                  <h1>Good job 🎉 You answered all of them✨</h1>
+                </center>
+              )
+            ) : answeredQuestions.length !== 0 ? (
+              answeredQuestions.map((question) => (
+                <Question key={question.id} question={question} />
+              ))
+            ) : (
+              <center>
+                <h1>You didn't answer any question yet, let kick it off 🎯</h1>
+              </center>
+            )}
           </div>
         </div>
       </div>
@@ -64,15 +80,11 @@ const mapStateToProps = ({ questions, authedUser }) => {
     let OptionOneVotes = question.optionOne.votes;
     let OptionTwoVotes = question.optionTwo.votes;
     if (
-      OptionOneVotes.includes(authedUser.authedUser) ||
-      OptionTwoVotes.includes(authedUser.authedUser)
-    )
-      answeredQuestions.push(question);
-    if (
       !OptionOneVotes.includes(authedUser.authedUser) &&
       !OptionTwoVotes.includes(authedUser.authedUser)
     )
       unAnsweredQuestions.push(question);
+    else answeredQuestions.push(question);
   });
 
   return {

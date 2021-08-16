@@ -1,0 +1,16 @@
+.question-card.answer {
+  max-width: 700px;
+  margin: auto;
+  margin-top: 10rem;
+
+  .btn--accent {
+    background-color: $MaterialUiAccentColor;
+    &:hover {
+      background-color: lighten($MaterialUiAccentColor, 20%);
+    }
+  }
+
+  .MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
+    font-size: 2rem;
+  }
+}

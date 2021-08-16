@@ -2,7 +2,7 @@ import {
   _getUsers,
   _getQuestions,
   _saveQuestion,
-  _saveQuestionAnswer,
+  _saveQuestionAnswer
 } from './_DATA';
 
 export const getInitialData = () => {
@@ -14,10 +14,11 @@ export const getInitialData = () => {
   );
 };
 
-export const saveQuestion = (question) => {
-  return _saveQuestion(question);
+export const saveQuestion = (info) => {
+  return _saveQuestion(info);
 };
 
-export const saveQuestionAnswer = (question) => {
-  return _saveQuestionAnswer(question);
+export const saveQuestionAnswer = (info) => {
+  console.log(`data received in api: `, info);
+  return _saveQuestionAnswer(info);
 };

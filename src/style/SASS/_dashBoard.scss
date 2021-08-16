@@ -55,6 +55,13 @@
     }
   }
 
+  .btn--accent {
+    background-color: $MaterialUiAccentColor;
+    &:hover {
+      background-color: lighten($MaterialUiAccentColor, 20%);
+    }
+  }
+
   .btn--lg-2-x {
     font-size: 2rem;
   }
@@ -62,7 +69,13 @@
   .btn--lg-1_5x {
     font-size: 1.5rem;
   }
+  .currentActiveSection {
+    background-color: #aaa;
+    color: #fff;
+  }
 }
 
 // we imported this at the end due to it will use some of the above style rules
 @import './question';
+@import './answerQuestionCard';
+@import './resultQuestionCard';

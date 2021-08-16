@@ -5,6 +5,7 @@ import Login from './Components/Login';
 import Loader from './loader';
 import Dashboard from './Components/Dashboard';
 import { Route } from 'react-router';
+import QuestionViewDashboard from './Components/QuestionViewDashboard';
 
 class App extends React.Component {
   componentDidMount() {
@@ -21,8 +22,9 @@ class App extends React.Component {
           </div>
         ) : (
           <React.Fragment>
-            <Route path="/login" component={Login} />
             <Route path="/" exact component={Dashboard} />
+            <Route path="/login" component={Login} />
+            <Route path="/question-view/:id" component={QuestionViewDashboard} />
           </React.Fragment>
         )}
       </div>

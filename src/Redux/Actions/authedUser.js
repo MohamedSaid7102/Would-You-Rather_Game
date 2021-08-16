@@ -6,3 +6,13 @@ export const setAuthedUser = (userID) => {
     userID,
   };
 };
+
+// export const handleSetAuthedUser = (userID) => {
+//   return (dispatch) => {
+//     let result = [];
+//     if (typeof userID === undefined)
+//       Object.keys(userID).forEach((key) => result.push(userID[key]));
+//     userID = result;
+//     dispatch(setAuthedUser(userID));
+//   };
+// };
