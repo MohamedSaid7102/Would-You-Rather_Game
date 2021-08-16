@@ -7,8 +7,16 @@ import Question from './QuestionsForm/Question';
 export const unAnswered = 'unAnswered';
 export const answered = 'answered';
 class Dashboard extends Component {
+  // TODO: move the state outside this component to redux so when user answer or view a question poll result and go back the viewed view will be the same as last time not every time on the unAsnswered
+  // TODO: sort qustion as reburcube want
+  // TODO: implement nav bar and handle it
+  // TODO: ITI
+  // TODO: implement leader board
+  // TODO: implement crete new question
+  // TODO: handle navbar and react router and navigation from the url
+  // TODO: Add icons to the pages
   state = {
-    currentViewedSection: unAnswered,
+    currentViewedSection: answered,
   };
 
   render() {
