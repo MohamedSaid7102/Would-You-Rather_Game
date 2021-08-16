@@ -1,0 +1,96 @@
+*,
+*::after,
+*::before {
+  transition: all 200ms ease-in-out;
+}
+.app-nav {
+  margin-bottom: 7rem;
+}
+ul.topnav {
+  display: flex;
+  background-color: #333;
+  list-style-type: none;
+  position: relative;
+  height: max-content;
+  overflow: hidden;
+}
+
+ul.topnav li {
+  margin: 0;
+  height: 100%;
+}
+
+ul.topnav li a {
+  border-radius: 10px;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {
+  background-color: #111;
+  color: lighten($MaterialUiSecondaryColor, 10%);
+}
+
+ul.topnav li a.active {
+  background-color: $MaterialUiPrimaryColor;
+}
+
+@media screen and (max-width: 927px) {
+  ul.topnav {
+    font-size: 1.5rem;
+  }
+}
+.humbrger-icon {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  font-size: 3.5rem;
+  z-index: 10;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+@media screen and (max-width: 646px) {
+  ul.topnav {
+    flex-direction: column;
+  }
+}
+
+.user-greeting-wrapper {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.user-greeting {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #fff;
+  padding: 5px;
+  width: 100%;
+  max-width: 350px;
+  position: relative;
+  right: 0;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    color: lighten($MaterialUiSecondaryColor, 10%);
+  }
+}

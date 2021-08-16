@@ -5,9 +5,6 @@ import Radio from '@material-ui/core/Radio';
 import { handleAddQuestionToUser } from '../../Redux/Actions/users';
 import { handleAddQuestionVotes } from '../../Redux/Actions/questions';
 
-// const optionOne = 'optionOne';
-// const optionTwo = 'optionTwo';
-
 // TODO: Responsiveness for the card and a little styling
 class QuestionAnswer extends Component {
   state = {
@@ -33,6 +30,7 @@ class QuestionAnswer extends Component {
         answer: this.state.answer,
       })
     )
+    this.forceUpdate();
   };
 
   render() {

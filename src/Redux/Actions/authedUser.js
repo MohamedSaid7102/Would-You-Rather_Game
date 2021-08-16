@@ -1,4 +1,6 @@
 export const SET_AUTHED_USER = 'SET_AUTHED_USER';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
 
 export const setAuthedUser = (userID) => {
   return {
@@ -7,12 +9,14 @@ export const setAuthedUser = (userID) => {
   };
 };
 
-// export const handleSetAuthedUser = (userID) => {
-//   return (dispatch) => {
-//     let result = [];
-//     if (typeof userID === undefined)
-//       Object.keys(userID).forEach((key) => result.push(userID[key]));
-//     userID = result;
-//     dispatch(setAuthedUser(userID));
-//   };
-// };
+export const logOut = () => {
+  return (dispatch) => {
+    return dispatch(setAuthedUser(null));
+  };
+};
+
+export const logIn = (userID) => {
+  return (dispatch) => {
+    return dispatch(setAuthedUser(userID));
+  };
+};

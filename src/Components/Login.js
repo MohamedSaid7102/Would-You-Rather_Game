@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { checkLoginUser } from '../utils/helpers';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../Redux/Actions/authedUser';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
   state = {
@@ -10,6 +10,7 @@ class Login extends Component {
     pass: '',
     authed: false,
   };
+
   handleSignIn = async (e) => {
     e.preventDefault();
     if (this.state.userName && this.state.pass) {
@@ -23,7 +24,16 @@ class Login extends Component {
       });
 
       if (this.state.authed) this.props.dispatch(setAuthedUser(userCheck));
-      else this.props.dispatch(setAuthedUser(null)); // TODO: I might change this later.
+      else this.props.dispatch(setAuthedUser(null));
+      // This is to go back where we were before sign in
+      let prevRouterPath =
+        (this.props.location.state !== null &&
+        this.props.location.state !== undefined)
+          ? this.props.location.state.previous.pathname
+          : null;
+      prevRouterPath
+        ? this.props.history.push(prevRouterPath)
+        : this.props.history.push('/');
 
       this.setState({
         userName: '',
@@ -33,7 +43,6 @@ class Login extends Component {
   };
   render() {
     // TODO: add loading effect when login in and the user is authed & show error messege if the user is not authed
-    if (this.state.authed) return <Redirect path="/" />;
     return (
       <div className="login-container">
         <h1 className="login__header">Login</h1>
@@ -68,4 +77,4 @@ const mapStateToProps = ({ authedUser }) => {
     authedUser,
   };
 };
-export default connect(mapStateToProps)(Login);
+export default withRouter(connect(mapStateToProps)(Login));

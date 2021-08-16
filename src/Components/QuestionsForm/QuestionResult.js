@@ -8,6 +8,7 @@ class QuestionResult extends Component {
   };
 
   componentDidMount() {
+    // make question evaluation every time user answer not on componont mount
     const { question } = this.props;
     let optionOneVotes = question.optionOne.votes.length;
     let optionTwoVotes = question.optionTwo.votes.length;
@@ -23,7 +24,6 @@ class QuestionResult extends Component {
     const { user, questionId } = this.props;
     this.setState({userAnswer: user.answers[questionId]})
   }
-  // TODO: determine which quesiton user answered and mark it
   render() {
     // card UI variables
     const authorName = this.props.questionAuthor.name;

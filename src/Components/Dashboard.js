@@ -7,20 +7,29 @@ import Question from './QuestionsForm/Question';
 export const unAnswered = 'unAnswered';
 export const answered = 'answered';
 class Dashboard extends Component {
+  // -----------------------------------
+  // Small ones
+  // -----------------------------------
   // TODO: move the state outside this component to redux so when user answer or view a question poll result and go back the viewed view will be the same as last time not every time on the unAsnswered
-  // TODO: sort qustion as reburcube want
-  // TODO: implement nav bar and handle it
-  // TODO: ITI
+  // TODO: fix the lagging in displaying the result
+  // -----------------------------------
+  // big ones
+  // -----------------------------------
   // TODO: implement leader board
   // TODO: implement crete new question
-  // TODO: handle navbar and react router and navigation from the url
+  // -----------------------------------
+  // Small ones
+  // -----------------------------------
+  // TODO: sort qustion as reburcube want
   // TODO: Add icons to the pages
+  // TODO: see all other todos.
+  // TODO: Revesion the rubrics
   state = {
-    currentViewedSection: answered,
+    currentViewedSection: unAnswered,
   };
 
   render() {
-    const { authedUser, answeredQuestions, unAnsweredQuestions } = this.props;
+    const { answeredQuestions, unAnsweredQuestions } = this.props;
     return (
       <div className="component-wrapper">
         <div className="questions-dashboard">
@@ -94,10 +103,21 @@ const mapStateToProps = ({ questions, authedUser }) => {
       unAnsweredQuestions.push(question);
     else answeredQuestions.push(question);
   });
-
+  // console.log('answeredQuestions before sorting:', answeredQuestions);
+  // console.log('unAnsweredQuestions before sorting:', unAnsweredQuestions);
+  // console.log(`\n-------------------------\n`);
+  // // answeredQuestions = answeredQuestions.forEach(question=>).sort(
+  // //   (a, b) => unAnsweredQuestions[a].timestamp - unAnsweredQuestions[b].timestamp
+  // //   )
+  // //   unAnsweredQuestions = unAnsweredQuestions.sort(
+  // //     (a, b) => unAnsweredQuestions[a].timestamp - unAnsweredQuestions[b].timestamp
+  // //     )
+  //     console.log(`\n-------------------------\n`);
+  //     console.log('answeredQuestions after sorting:', answeredQuestions);
+  //     console.log('unAnsweredQuestions after sorting:', unAnsweredQuestions);
   return {
-    answeredQuestions,
-    unAnsweredQuestions,
+    answeredQuestions: answeredQuestions.sort(),
+    unAnsweredQuestions: unAnsweredQuestions.sort(),
     authedUser: authedUser.authedUser,
   };
 };
