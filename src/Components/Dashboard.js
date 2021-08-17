@@ -10,7 +10,7 @@ class Dashboard extends Component {
   // -----------------------------------
   // big ones
   // -----------------------------------
-  // TODO: implement crete new question.
+  // TODO: Fix the bug (backend is not updated so user won't be able to navigate to newly created questions or answer them)
   // TODO: Revesion the rubrics
   // TODO: push the project 🚀
   // -----------------------------------

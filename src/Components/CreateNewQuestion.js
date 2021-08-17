@@ -31,7 +31,6 @@ class CreateNewQuestion extends Component {
           formattedQuestion,
         })
       ); //add new question to user questions
-      // TODO: implement reouter to go back to the unanswered question
 
       // Empty inputs
       this.setState({
