@@ -1,16 +1,19 @@
-import { _checkUser } from "./_DATA"
+import { _checkUser, _didUserAnswer } from './_DATA';
 
-export function formatDate (timestamp) {
-  const d = new Date(timestamp)
-  const time = d.toLocaleTimeString('en-US')
-  return time.substr(0, 5) + time.slice(-2) + ' | ' + d.toLocaleDateString()
+export function formatDate(timestamp) {
+  const d = new Date(timestamp);
+  const time = d.toLocaleTimeString('en-US');
+  return time.substr(0, 5) + time.slice(-2) + ' | ' + d.toLocaleDateString();
 }
 
-function generateUID () {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+function generateUID() {
+  return (
+    Math.random().toString(36).substring(2, 15) +
+    Math.random().toString(36).substring(2, 15)
+  );
 }
 
-export function formatQuestion ({ optionOneText, optionTwoText, author }) {
+export function formatQuestion({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
@@ -22,10 +25,14 @@ export function formatQuestion ({ optionOneText, optionTwoText, author }) {
     optionTwo: {
       votes: [],
       text: optionTwoText,
-    }
-  }
+    },
+  };
 }
 
-export function checkLoginUser (userName, pass) {
-  return _checkUser(userName,pass);
+export function checkLoginUser(userName, pass) {
+  return _checkUser(userName, pass);
 }
+// TODO: Delete
+// export function didUserAnswer(uid, qid) {
+//   return _didUserAnswer(uid, qid);
+// }

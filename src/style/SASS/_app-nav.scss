@@ -13,6 +13,7 @@ ul.topnav {
   position: relative;
   height: max-content;
   overflow: hidden;
+  font-size: 1.5rem;
 }
 
 ul.topnav li {
@@ -37,31 +38,36 @@ ul.topnav li a:hover:not(.active) {
 ul.topnav li a.active {
   background-color: $MaterialUiPrimaryColor;
 }
-
-@media screen and (max-width: 927px) {
-  ul.topnav {
-    font-size: 1.5rem;
-  }
-}
 .humbrger-icon {
-  width: 50px;
-  height: 50px;
+  padding: 5px;
+	width: 30px;
+	height: 30px;
+	background-color: transparent;
+	color: #000 ;
+	border: 1px solid #000;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
   position: absolute;
   top: 1rem;
   right: 2rem;
-  padding: 0;
   cursor: pointer;
-  background-color: transparent;
-  border: none;
-  color: #333;
   text-align: center;
-  margin: 0;
-  font-size: 3.5rem;
   z-index: 10;
   &:hover {
-    transform: scale(1.1);
+    background-color: transparent;
   }
 }
+.humbrger-icon.white {
+  color: #fff;
+  border-color: #fff;
+}
+.humbrger-icon.black {
+  color: #000;
+  border-color: #000;
+}
+
 @media screen and (max-width: 646px) {
   ul.topnav {
     flex-direction: column;

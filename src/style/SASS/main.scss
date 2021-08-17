@@ -3,6 +3,8 @@
 @import './login';
 @import './dashBoard';
 @import './app-nav';
+@import './leaderBoard';
+
 body,
 html {
   font-size: 62.5%;
@@ -14,6 +16,10 @@ body {
   font-size: 2.5rem;
 }
 
+.wrapper {
+  margin: auto;
+  padding: 1rem;
+}
 .loading-icon {
   position: absolute;
   top: 50%;

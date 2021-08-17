@@ -20,17 +20,14 @@ class Nav extends Component {
   render() {
     return (
       <nav className="app-nav">
-        <button
-          className="humbrger-icon"
+        <BiMenuAltRight
+          className={`humbrger-icon ${this.state.showNav? 'white':'black'}`}
           onClick={() =>
             this.setState(({ showNav }) => ({
               showNav: showNav ? false : true,
             }))
           }
-          style={{ width: '50px' }}
-        >
-          <BiMenuAltRight />
-        </button>
+        />
         <ul
           className="topnav"
           style={
@@ -38,12 +35,7 @@ class Nav extends Component {
           }
         >
           <li>
-            <NavLink
-              to="/"
-              exact
-              id="home"
-              activeClassName='active'
-            >
+            <NavLink to="/" exact id="home" activeClassName="active">
               Home
             </NavLink>
           </li>
@@ -51,7 +43,7 @@ class Nav extends Component {
             <NavLink
               to="create-new-question"
               id="createQuestion"
-              activeClassName='active'
+              activeClassName="active"
             >
               New Question
             </NavLink>
@@ -60,28 +52,20 @@ class Nav extends Component {
             <NavLink
               to="leader-board"
               id="leaderBoard"
-              activeClassName='active'
+              activeClassName="active"
             >
               Leader board
             </NavLink>
           </li>
           {this.props.authedUser !== null ? (
             <li className="right" onClick={this.handleLog}>
-              <NavLink
-                to="/login"
-                id="login"
-                activeClassName='active'
-              >
+              <NavLink to="/login" id="login" activeClassName="active">
                 Log out
               </NavLink>
             </li>
           ) : (
             <li className="right" onClick={this.handleLog}>
-              <NavLink
-                to="/login"
-                id="login"
-                activeClassName='active'
-              >
+              <NavLink to="/login" id="login" activeClassName="active">
                 Log In
               </NavLink>
             </li>

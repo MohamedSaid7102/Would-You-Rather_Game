@@ -7,7 +7,7 @@ import Dashboard from './Components/Dashboard';
 import QuestionViewDashboard from './Components/QuestionViewDashboard';
 import Nav from './Components/Nav';
 import CreateNewQuestion from './Components/CreateNewQuestion';
-import LeaderBoard from './Components/LeaderBoard';
+import LeaderBoard from './Components/Leaderboard/LeaderBoard';
 import {
   HashRouter as Router,
   Route,

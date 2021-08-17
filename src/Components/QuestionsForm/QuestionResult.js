@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 class QuestionResult extends Component {
   state = {
-    optionOne: 0,
-    optionTwo: 0,
     userAnswer: '',
   };
 
   componentDidMount() {
-    // make question evaluation every time user answer not on componont mount
+    const { user, questionId } = this.props;
+    this.setState({ userAnswer: user.answers[questionId] });
+  }
+
+  render() {
     const { question } = this.props;
     let optionOneVotes = question.optionOne.votes.length;
     let optionTwoVotes = question.optionTwo.votes.length;
@@ -19,49 +22,61 @@ class QuestionResult extends Component {
     let optionTwoVotesPersent = ((optionTwoVotes / totalVotes) * 100).toFixed(
       1
     );
-    this.setState({ optionOne: optionOneVotesPersent });
-    this.setState({ optionTwo: optionTwoVotesPersent });
-    const { user, questionId } = this.props;
-    this.setState({userAnswer: user.answers[questionId]})
-  }
-  render() {
     // card UI variables
     const authorName = this.props.questionAuthor.name;
     const authorAvatar = this.props.questionAuthor.avatarURL;
     const { optionOne, optionTwo } = this.props;
     // card logic variables
     return (
-      <div className="question-card answer">
-        <div className="card__header">{authorName} asks: </div>
-        <div className="card__body">
-          <div className="card__avatar">
-            <img src={authorAvatar} alt={authorName} className="avatar__img" />
-          </div>
-          <div className="card__info">
-            <h3 className="card__heading">Would You Rather..</h3>
-            {/* 1 */}
-            <div className={`question-vote ${this.state.userAnswer==='optionOne'?'user-selected':''}`}>
-              <label htmlFor="optionOne">
-                {`${this.state.optionOne}`}% {'▶ '}
-                {optionOne}
-              </label>
-              <progress
-                className="optionContent"
-                value={`${this.state.optionOne}`}
-                max="100"
-              ></progress>
+      <div className="wrapper">
+        <div className="question-card answer">
+          <div className="card__header">{authorName} asks: </div>
+          <div className="card__body">
+            <div className="card__avatar">
+              <img
+                src={authorAvatar}
+                alt={authorName}
+                className="avatar__img"
+              />
             </div>
-            {/* 2 */}
-            <div className={`question-vote ${this.state.userAnswer==='optionTwo'?'user-selected':''}`}>
-              <label htmlFor="optionTwo">
-                {`${this.state.optionTwo}`}% {'▶ '}
-                {optionTwo}
-              </label>
-              <progress
-                className="optionContent"
-                value={`${this.state.optionTwo}`}
-                max="100"
-              ></progress>
+            <div className="card__info">
+              <h3 className="card__heading">Would You Rather..</h3>
+              {/* 1 */}
+              <div
+                className={`question-vote ${
+                  this.state.userAnswer === 'optionOne' ? 'user-selected' : ''
+                }`}
+              >
+                <label htmlFor="optionOne">
+                  {`${optionOneVotesPersent}% ― ${optionOneVotes} out of ${totalVotes}
+            votes`}
+                  {'▶ '}
+                  {optionOne}
+                </label>
+                <progress
+                  className="optionContent"
+                  value={`${optionOneVotesPersent}`}
+                  max="100"
+                ></progress>
+              </div>
+              {/* 2 */}
+              <div
+                className={`question-vote ${
+                  this.state.userAnswer === 'optionTwo' ? 'user-selected' : ''
+                }`}
+              >
+                <label htmlFor="optionTwo">
+                  {`${optionTwoVotesPersent}% ― ${optionTwoVotes} out of ${totalVotes}
+            votes`}{' '}
+                  {'▶ '}
+                  {optionTwo}
+                </label>
+                <progress
+                  className="optionContent"
+                  value={`${optionTwoVotesPersent}`}
+                  max="100"
+                ></progress>
+              </div>
             </div>
           </div>
         </div>

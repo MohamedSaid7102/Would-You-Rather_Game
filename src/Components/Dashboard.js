@@ -8,11 +8,6 @@ export const unAnswered = 'unAnswered';
 export const answered = 'answered';
 class Dashboard extends Component {
   // -----------------------------------
-  // Small ones
-  // -----------------------------------
-  // TODO: move the state outside this component to redux so when user answer or view a question poll result and go back the viewed view will be the same as last time not every time on the unAsnswered
-  // TODO: fix the lagging in displaying the result
-  // -----------------------------------
   // big ones
   // -----------------------------------
   // TODO: implement leader board
@@ -24,6 +19,7 @@ class Dashboard extends Component {
   // TODO: Add icons to the pages
   // TODO: see all other todos.
   // TODO: Revesion the rubrics
+  // TODO: clean up your comments and logs 
   state = {
     currentViewedSection: unAnswered,
   };

@@ -214,6 +214,8 @@
   max-width: 700px;
   margin: auto;
   margin-top: 10rem;
+  margin-bottom: 5rem;
+  height: 100%;
 }
 .question-card.answer .btn--accent {
   background-color: #268f26;
@@ -223,40 +225,60 @@
 }
 .question-card.answer .MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
   font-size: 2rem;
+  margin-left: 1.5rem;
+  text-align: center;
+}
+.question-card.answer .MuiFormControlLabel-root.card__question {
+  width: 100%;
+  margin-left: 1.5rem;
 }
 
 .question-vote {
   width: 80%;
   display: table;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 4rem;
   position: relative;
 }
 .question-vote .optionContent {
   width: 100%;
   height: 30px;
 }
+
 @media screen and (max-width: 500px) {
+  .form-answer {
+    display: flex;
+    flex-direction: column;
+  }
+
   .question-vote {
+    margin-top: 4rem;
     width: 70%;
   }
 }
-
 .question-vote.user-selected::after {
   content: url("https://image.flaticon.com/icons/png/512/1828/1828652.png");
   display: block;
   position: absolute;
-  width: 5px;
-  height: 5px;
-  transform: scale(0.07);
-  left: -5rem;
+  transform: scale(0.05);
+  width: 1px;
+  height: 1px;
+  left: -4rem;
   top: 1.5rem;
 }
 
+@media screen and (max-width: 306px) {
+  .question-vote.user-selected::after {
+    left: 8rem;
+    top: -3.5rem;
+  }
+}
 .question-card.answer {
   max-width: 700px;
   margin: auto;
   margin-top: 10rem;
+  margin-bottom: 5rem;
+  height: 100%;
 }
 .question-card.answer .btn--accent {
   background-color: #268f26;
@@ -266,36 +288,54 @@
 }
 .question-card.answer .MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
   font-size: 2rem;
+  margin-left: 1.5rem;
+  text-align: center;
+}
+.question-card.answer .MuiFormControlLabel-root.card__question {
+  width: 100%;
+  margin-left: 1.5rem;
 }
 
 .question-vote {
   width: 80%;
   display: table;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 4rem;
   position: relative;
 }
 .question-vote .optionContent {
   width: 100%;
   height: 30px;
 }
+
 @media screen and (max-width: 500px) {
+  .form-answer {
+    display: flex;
+    flex-direction: column;
+  }
+
   .question-vote {
+    margin-top: 4rem;
     width: 70%;
   }
 }
-
 .question-vote.user-selected::after {
   content: url("https://image.flaticon.com/icons/png/512/1828/1828652.png");
   display: block;
   position: absolute;
-  width: 5px;
-  height: 5px;
-  transform: scale(0.07);
-  left: -5rem;
+  transform: scale(0.05);
+  width: 1px;
+  height: 1px;
+  left: -4rem;
   top: 1.5rem;
 }
 
+@media screen and (max-width: 306px) {
+  .question-vote.user-selected::after {
+    left: 8rem;
+    top: -3.5rem;
+  }
+}
 *,
 *::after,
 *::before {
@@ -315,6 +355,7 @@ ul.topnav {
   height: -moz-max-content;
   height: max-content;
   overflow: hidden;
+  font-size: 1.5rem;
 }
 
 ul.topnav li {
@@ -340,29 +381,36 @@ ul.topnav li a.active {
   background-color: #3f51b5;
 }
 
-@media screen and (max-width: 927px) {
-  ul.topnav {
-    font-size: 1.5rem;
-  }
-}
 .humbrger-icon {
-  width: 50px;
-  height: 50px;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 1rem;
   right: 2rem;
-  padding: 0;
   cursor: pointer;
-  background-color: transparent;
-  border: none;
-  color: #333;
   text-align: center;
-  margin: 0;
-  font-size: 3.5rem;
   z-index: 10;
 }
 .humbrger-icon:hover {
-  transform: scale(1.1);
+  background-color: transparent;
+}
+
+.humbrger-icon.white {
+  color: #fff;
+  border-color: #fff;
+}
+
+.humbrger-icon.black {
+  color: #000;
+  border-color: #000;
 }
 
 @media screen and (max-width: 646px) {
@@ -396,6 +444,17 @@ ul.topnav li a.active {
   color: #ff2975;
 }
 
+.leader-board {
+  margin: auto;
+  display: table;
+  margin-top: 4rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 body,
 html {
   font-size: 62.5%;
@@ -405,6 +464,11 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: normal;
   font-size: 2.5rem;
+}
+
+.wrapper {
+  margin: auto;
+  padding: 1rem;
 }
 
 .loading-icon {

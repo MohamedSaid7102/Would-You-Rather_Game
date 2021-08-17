@@ -118,6 +118,19 @@ let questions = {
   },
 };
 
+// TODO: Delete
+// export function _didUserAnswer(uid, qid) {
+//   Object.keys(questions).forEach((questionId) => {
+//     if (
+//       questionId === qid &&
+//       (questions[questionId].optionOne.votes.includes(uid) ||
+//         questions[questionId].optionTwo.votes.includes(uid))
+//     )
+//       return true;
+//   });
+//   return false;
+// }
+
 function generateUID() {
   return (
     Math.random().toString(36).substring(2, 15) +
