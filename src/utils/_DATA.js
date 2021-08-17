@@ -39,7 +39,7 @@ let users = {
 
 let questions = {
   '8xf0y6ziyjabvozdd253nd': {
-    id: '8xf0y6ziyjabvozdd253nd',
+    qid: '8xf0y6ziyjabvozdd253nd',
     author: 'sarahedo',
     timestamp: 1467166872634,
     optionOne: {
@@ -52,7 +52,7 @@ let questions = {
     },
   },
   '6ni6ok3ym7mf1p33lnez': {
-    id: '6ni6ok3ym7mf1p33lnez',
+    qid: '6ni6ok3ym7mf1p33lnez',
     author: 'johndoe',
     timestamp: 1468479767190,
     optionOne: {
@@ -65,7 +65,7 @@ let questions = {
     },
   },
   am8ehyc8byjqgar0jgpub9: {
-    id: 'am8ehyc8byjqgar0jgpub9',
+    qid: 'am8ehyc8byjqgar0jgpub9',
     author: 'sarahedo',
     timestamp: 1488579767190,
     optionOne: {
@@ -78,7 +78,7 @@ let questions = {
     },
   },
   loxhs1bqm25b708cmbf3g: {
-    id: 'loxhs1bqm25b708cmbf3g',
+    qid: 'loxhs1bqm25b708cmbf3g',
     author: 'tylermcginnis',
     timestamp: 1482579767190,
     optionOne: {
@@ -91,7 +91,7 @@ let questions = {
     },
   },
   vthrdm985a262al8qx3do: {
-    id: 'vthrdm985a262al8qx3do',
+    qid: 'vthrdm985a262al8qx3do',
     author: 'tylermcginnis',
     timestamp: 1489579767190,
     optionOne: {
@@ -104,7 +104,7 @@ let questions = {
     },
   },
   xj352vofupe1dqz9emx13r: {
-    id: 'xj352vofupe1dqz9emx13r',
+    qid: 'xj352vofupe1dqz9emx13r',
     author: 'johndoe',
     timestamp: 1493579767190,
     optionOne: {
@@ -147,7 +147,7 @@ export function _getQuestions() {
 
 function formatQuestion({ optionOneText, optionTwoText, author }) {
   return {
-    id: generateUID(),
+    qid: generateUID(),
     timestamp: Date.now(),
     author,
     optionOne: {
@@ -162,6 +162,7 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
 }
 
 export function _saveQuestion(question) {
+  console.log(`object received to db: `, question);
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
@@ -169,17 +170,20 @@ export function _saveQuestion(question) {
     setTimeout(() => {
       questions = {
         ...questions,
-        [formattedQuestion.id]: formattedQuestion,
+        [formattedQuestion.qid]: formattedQuestion,
       };
 
       users = {
         ...users,
         [authedUser]: {
           ...users[authedUser],
-          questions: users[authedUser].questions.concat([formattedQuestion.id]),
+          questions: users[authedUser].questions.concat([
+            formattedQuestion.qid,
+          ]),
         },
       };
-
+      console.log(`questions Now are: `, questions);
+      console.log(`users Now are: `, users);
       res(formattedQuestion);
     }, 1000);
   });
@@ -198,7 +202,9 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
           },
         },
       };
-
+      console.log(`qid: `, qid);
+      console.log(`questions: `, questions);
+      console.log(`questions[qid]: `, questions[qid]);
       questions = {
         ...questions,
         [qid]: {

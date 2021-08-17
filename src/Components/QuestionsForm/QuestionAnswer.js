@@ -96,7 +96,7 @@ class QuestionAnswer extends Component {
 const mapStateToProps = ({ users }, { question }) => {
   return {
     questionAuthor: users[question.author],
-    questionId: question.id,
+    questionId: question.qid,
     optionOne: question.optionOne.text,
     optionTwo: question.optionTwo.text,
     question,

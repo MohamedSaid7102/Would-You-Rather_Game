@@ -8,7 +8,7 @@ class Question extends Component {
   render() {
     const authorName = this.props.questionAuthor.name;
     const authorAvatar = this.props.questionAuthor.avatarURL;
-    const { id, optionOne, optionTwo, question } = this.props;
+    const { qid, optionOne, optionTwo, question } = this.props;
 
     return (
       <div className="question-card">
@@ -32,7 +32,7 @@ class Question extends Component {
               <br />
               {optionTwo.substring(0, 5)}...
             </p>
-            <Link to={`/question-view/${id}`}>
+            <Link to={`/question-view/${qid}`}>
               <Button
                 variant="contained"
                 color="secondary"
@@ -52,7 +52,7 @@ const mapStateToProps = ({ users }, { question }) => {
     questionAuthor: users[question.author],
     optionOne: question.optionOne.text,
     optionTwo: question.optionTwo.text,
-    id: question.id,
+    qid: question.qid,
     question,
   };
 };

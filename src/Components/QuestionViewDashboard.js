@@ -31,10 +31,10 @@ class QuestionViewDashboard extends Component {
 }
 
 const mapStateToProps = ({ questions, authedUser, users }, props) => {
-  const { id } = props.match.params;
+  const { qid } = props.match.params;
   return {
-    qid: id,
-    question: questions[id],
+    qid,
+    question: questions[qid],
     currentUser: users[authedUser.authedUser],
     uid: users[authedUser.authedUser].id,
   };

@@ -60,7 +60,7 @@ class App extends React.Component {
                   />
                   <PrivateRoute
                     exact
-                    path="/question-view/:id"
+                    path="/question-view/:qid"
                     component={QuestionViewDashboard}
                   />
                   <Route render={() => <ErrorPage />} />

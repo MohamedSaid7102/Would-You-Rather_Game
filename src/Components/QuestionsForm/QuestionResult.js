@@ -94,7 +94,7 @@ const mapStateToProps = ({ users, authedUser }, { question }) => {
     user: users[authedUser.authedUser],
     question,
     questionAuthor: users[question.author],
-    questionId: question.id,
+    questionId: question.qid,
     optionOne: question.optionOne.text,
     optionTwo: question.optionTwo.text,
   };

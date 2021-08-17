@@ -15,7 +15,7 @@ function generateUID() {
 
 export function formatQuestion({ optionOneText, optionTwoText, author }) {
   return {
-    id: generateUID(),
+    qid: generateUID(),
     timestamp: Date.now(),
     author,
     optionOne: {

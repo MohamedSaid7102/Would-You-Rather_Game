@@ -60,7 +60,7 @@ class Dashboard extends Component {
             {this.state.currentViewedSection === unAnswered ? (
               unAnsweredQuestions.length !== 0 ? (
                 unAnsweredQuestions.map((question) => (
-                  <Question key={question.id} question={question} />
+                  <Question key={question.qid} question={question} />
                 ))
               ) : (
                 <center>
@@ -72,7 +72,7 @@ class Dashboard extends Component {
               )
             ) : answeredQuestions.length !== 0 ? (
               answeredQuestions.map((question) => (
-                <Question key={question.id} question={question} />
+                <Question key={question.qid} question={question} />
               ))
             ) : (
               <center>
