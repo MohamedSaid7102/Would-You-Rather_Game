@@ -9,7 +9,6 @@ class QuestionViewDashboard extends Component {
     this.state = {
       answered: false,
     };
-    // this.handleQuestionAnswer.bind();
   }
 
   render() {
@@ -18,7 +17,6 @@ class QuestionViewDashboard extends Component {
     const { qid, question, currentUser } = this.props;
     let userAnsweredQuestionsIds = Object.keys(currentUser.answers);
 
-    // this.setState({answered: userAnsweredQuestionsIds.includes(qid)})
     if (userAnsweredQuestionsIds.includes(qid))
       return <QuestionResult question={question} />;
 

@@ -10,12 +10,11 @@ class Dashboard extends Component {
   // -----------------------------------
   // big ones
   // -----------------------------------
-  // TODO: implement leader board
-  // TODO: implement crete new question
+  // TODO: implement leader board.
+  // TODO: implement crete new question.
   // -----------------------------------
   // Small ones
   // -----------------------------------
-  // TODO: sort qustion as reburcube want
   // TODO: Add icons to the pages
   // TODO: see all other todos.
   // TODO: Revesion the rubrics

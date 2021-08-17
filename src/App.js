@@ -50,12 +50,12 @@ class App extends React.Component {
                   <Route exact path="/login" component={Login} />
                   <PrivateRoute
                     exact
-                    path="/create-new-question"
+                    path="/add"
                     component={CreateNewQuestion}
                   />
                   <PrivateRoute
                     exact
-                    path="/leader-board"
+                    path="/leaderboard"
                     component={LeaderBoard}
                   />
                   <PrivateRoute

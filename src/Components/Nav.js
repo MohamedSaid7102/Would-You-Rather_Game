@@ -41,7 +41,7 @@ class Nav extends Component {
           </li>
           <li>
             <NavLink
-              to="create-new-question"
+              to="/add"
               id="createQuestion"
               activeClassName="active"
             >
@@ -50,7 +50,7 @@ class Nav extends Component {
           </li>
           <li>
             <NavLink
-              to="leader-board"
+              to="/leaderboard"
               id="leaderBoard"
               activeClassName="active"
             >
