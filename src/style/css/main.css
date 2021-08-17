@@ -70,12 +70,6 @@
 .questions-dashboard .btn--secondary:hover {
   background-color: #f50057;
 }
-.questions-dashboard .btn--accent {
-  background-color: #268f26;
-}
-.questions-dashboard .btn--accent:hover {
-  background-color: #4ccf4c;
-}
 .questions-dashboard .btn--lg-2-x {
   font-size: 2rem;
 }
@@ -90,7 +84,8 @@
 .question-card {
   display: flex;
   flex-direction: column;
-  height: 330px;
+  height: 100%;
+  padding-bottom: 2rem;
   justify-content: flex-start;
   align-items: center;
   border: 1px solid #aaa;
@@ -145,8 +140,19 @@
   position: relative;
 }
 .question-card .card__body .card__info .card__heading {
+  position: relative;
   font-size: 3rem;
   font-weight: 500;
+  margin-top: 2rem;
+}
+.question-card .card__body .card__info .card__heading .time-duration {
+  position: absolute;
+  top: -1.5rem;
+  left: 0.2rem;
+  font-size: 1.3rem;
+  font-weight: 100;
+  color: gray;
+  letter-spacing: 2px;
 }
 .question-card .card__body .card__info .card__question {
   font-size: 2rem;
@@ -201,6 +207,10 @@
   .question-card .card__body .card__info .card__heading {
     font-size: 2.5rem;
     font-weight: 900;
+    margin-top: 3.5rem;
+  }
+  .question-card .card__body .card__info .card__heading .time-duration {
+    top: -3.4rem;
   }
   .question-card .card__body .avatar__img {
     width: 50px;
@@ -218,10 +228,15 @@
   height: 100%;
 }
 .question-card.answer .btn--accent {
-  background-color: #268f26;
+  background-color: #4ccf4c;
+  color: #fff;
+  border: 1px solid #4ccf4c;
+  transition: all 200ms ease-in-out;
 }
 .question-card.answer .btn--accent:hover {
-  background-color: #4ccf4c;
+  background-color: #268f26;
+  background: transparent;
+  color: #268f26;
 }
 .question-card.answer .MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
   font-size: 2rem;
@@ -237,7 +252,7 @@
   width: 80%;
   display: table;
   margin: auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
   position: relative;
 }
 .question-vote .optionContent {
@@ -281,10 +296,15 @@
   height: 100%;
 }
 .question-card.answer .btn--accent {
-  background-color: #268f26;
+  background-color: #4ccf4c;
+  color: #fff;
+  border: 1px solid #4ccf4c;
+  transition: all 200ms ease-in-out;
 }
 .question-card.answer .btn--accent:hover {
-  background-color: #4ccf4c;
+  background-color: #268f26;
+  background: transparent;
+  color: #268f26;
 }
 .question-card.answer .MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
   font-size: 2rem;
@@ -300,7 +320,7 @@
   width: 80%;
   display: table;
   margin: auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
   position: relative;
 }
 .question-vote .optionContent {

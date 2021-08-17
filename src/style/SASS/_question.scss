@@ -4,7 +4,8 @@ $cardHeight: 330px;
 .question-card {
   display: flex;
   flex-direction: column;
-  height: $cardHeight;
+  height: 100%;
+  padding-bottom: 2rem;
   justify-content: flex-start;
   align-items: center;
   border: 1px solid #aaa;
@@ -53,10 +54,20 @@ $cardHeight: 330px;
       font-size: 1rem;
       flex: 3;
       position: relative;
-
       .card__heading {
+        position: relative;
         font-size: 3rem;
         font-weight: 500;
+        margin-top: 2rem;
+        .time-duration {
+          position: absolute;
+          top: -1.5rem;
+          left: 0.2rem;
+          font-size: 1.3rem;
+          font-weight: 100;
+          color: gray;
+          letter-spacing: 2px;
+        }
       }
       .card__question {
         font-size: 2rem;
@@ -96,6 +107,7 @@ $cardHeight: 330px;
           margin: auto;
           width: max-content;
           display: table;
+          
         }
         .card__question  {
           margin: 1rem auto;
@@ -112,6 +124,10 @@ $cardHeight: 330px;
         .card__heading {
           font-size: 2.5rem;
           font-weight: 900;
+          margin-top: 3.5rem;
+          .time-duration {
+            top: -3.4rem;
+          }
         }
       }
 

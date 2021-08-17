@@ -55,13 +55,6 @@
     }
   }
 
-  .btn--accent {
-    background-color: $MaterialUiAccentColor;
-    &:hover {
-      background-color: lighten($MaterialUiAccentColor, 20%);
-    }
-  }
-
   .btn--lg-2-x {
     font-size: 2rem;
   }

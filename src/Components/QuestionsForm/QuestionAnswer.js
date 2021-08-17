@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Radio from '@material-ui/core/Radio';
 import { handleAddQuestionToUser } from '../../Redux/Actions/users';
 import { handleAddQuestionVotes } from '../../Redux/Actions/questions';
+import { formatDate } from '../../utils/helpers';
 
 class QuestionAnswer extends Component {
   state = {
@@ -32,7 +33,7 @@ class QuestionAnswer extends Component {
   render() {
     const authorName = this.props.questionAuthor.name;
     const authorAvatar = this.props.questionAuthor.avatarURL;
-    const { optionOne, optionTwo } = this.props;
+    const { optionOne, optionTwo, question } = this.props;
     return (
       <div className="wrapper">
         <div className="question-card answer">
@@ -46,7 +47,13 @@ class QuestionAnswer extends Component {
               />
             </div>
             <div className="card__info">
-              <h3 className="card__heading">Would You Rather..</h3>
+              <h3 className="card__heading">
+                {' '}
+                <span className="time-duration">
+                  {formatDate(question.timestamp)}
+                </span>
+                Would You Rather..
+              </h3>
               <form
                 onSubmit={this.handleUserAnswerSubmit}
                 className="form-answer"
@@ -73,7 +80,7 @@ class QuestionAnswer extends Component {
                 </RadioGroup>
                 <Button
                   variant="contained"
-                  color="secondary"
+                  // color="secondary"
                   className="btn btn--lg-1_5x btn--accent"
                   type="submit"
                 >
@@ -89,12 +96,12 @@ class QuestionAnswer extends Component {
 }
 
 const mapStateToProps = ({ users, questions }, { question }) => {
-  const currQuestion = questions[question.id];
   return {
-    questionAuthor: users[currQuestion.author],
-    questionId: currQuestion.id,
-    optionOne: currQuestion.optionOne.text,
-    optionTwo: currQuestion.optionTwo.text,
+    questionAuthor: users[question.author],
+    questionId: question.id,
+    optionOne: question.optionOne.text,
+    optionTwo: question.optionTwo.text,
+    question,
   };
 };
 export default connect(mapStateToProps)(QuestionAnswer);

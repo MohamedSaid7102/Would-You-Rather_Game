@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { formatDate } from '../../utils/helpers';
 class QuestionResult extends Component {
   state = {
     userAnswer: '',
@@ -12,7 +12,7 @@ class QuestionResult extends Component {
   }
 
   render() {
-    const { question } = this.props;
+    const { question, optionOne, optionTwo } = this.props;
     let optionOneVotes = question.optionOne.votes.length;
     let optionTwoVotes = question.optionTwo.votes.length;
     let totalVotes = optionOneVotes + optionTwoVotes;
@@ -25,7 +25,6 @@ class QuestionResult extends Component {
     // card UI variables
     const authorName = this.props.questionAuthor.name;
     const authorAvatar = this.props.questionAuthor.avatarURL;
-    const { optionOne, optionTwo } = this.props;
     // card logic variables
     return (
       <div className="wrapper">
@@ -40,7 +39,12 @@ class QuestionResult extends Component {
               />
             </div>
             <div className="card__info">
-              <h3 className="card__heading">Would You Rather..</h3>
+              <h3 className="card__heading">
+                <span className="time-duration">
+                  {formatDate(question.timestamp)}
+                </span>
+                Result..
+              </h3>
               {/* 1 */}
               <div
                 className={`question-vote ${
@@ -86,15 +90,14 @@ class QuestionResult extends Component {
 }
 
 const mapStateToProps = ({ users, authedUser, questions }, { question }) => {
-  const currQuestion = questions[question.id];
   return {
     // userId: users[authedUser.authedUser].id,
     user: users[authedUser.authedUser],
-    question: currQuestion,
-    questionAuthor: users[currQuestion.author],
-    questionId: currQuestion.id,
-    optionOne: currQuestion.optionOne.text,
-    optionTwo: currQuestion.optionTwo.text,
+    question,
+    questionAuthor: users[question.author],
+    questionId: question.id,
+    optionOne: question.optionOne.text,
+    optionTwo: question.optionTwo.text,
   };
 };
 export default connect(mapStateToProps)(QuestionResult);

@@ -5,9 +5,14 @@
   margin-bottom: 5rem;
   height: 100%;
   .btn--accent {
-    background-color: $MaterialUiAccentColor;
+    background-color: lighten($MaterialUiAccentColor, 20%);
+    color: #fff;
+    border: 1px solid lighten($MaterialUiAccentColor, 20%);
+    transition: all 200ms ease-in-out;
     &:hover {
-      background-color: lighten($MaterialUiAccentColor, 20%);
+      background-color: $MaterialUiAccentColor;
+      background:transparent;
+      color: $MaterialUiAccentColor;
     }
   }
 
@@ -26,7 +31,7 @@
   width: 80%;
   display: table;
   margin: auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
   position: relative;
   .optionContent {
     width: 100%;

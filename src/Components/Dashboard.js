@@ -19,7 +19,7 @@ class Dashboard extends Component {
   // TODO: Add icons to the pages
   // TODO: see all other todos.
   // TODO: Revesion the rubrics
-  // TODO: clean up your comments and logs 
+  // TODO: clean up your comments and logs
   state = {
     currentViewedSection: unAnswered,
   };
@@ -65,7 +65,10 @@ class Dashboard extends Component {
                 ))
               ) : (
                 <center>
-                  <h1>Good job 🎉 You answered all of them✨</h1>
+                  <h1>
+                    Good job 🎉 You answered all of them✨ Try to add new ones
+                    and challenge your frinds 🚀
+                  </h1>
                 </center>
               )
             ) : answeredQuestions.length !== 0 ? (
@@ -88,8 +91,13 @@ class Dashboard extends Component {
 const mapStateToProps = ({ questions, authedUser }) => {
   let answeredQuestions = [];
   let unAnsweredQuestions = [];
-  Object.keys(questions).forEach((questionId) => {
-    let question = questions[questionId];
+
+  let questionsArray = Object.keys(questions).map((qid) => ({
+    qid,
+    question: questions[qid],
+  }));
+
+  questionsArray.forEach(({ question }) => {
     let OptionOneVotes = question.optionOne.votes;
     let OptionTwoVotes = question.optionTwo.votes;
     if (
@@ -99,23 +107,54 @@ const mapStateToProps = ({ questions, authedUser }) => {
       unAnsweredQuestions.push(question);
     else answeredQuestions.push(question);
   });
-  // console.log('answeredQuestions before sorting:', answeredQuestions);
-  // console.log('unAnsweredQuestions before sorting:', unAnsweredQuestions);
-  // console.log(`\n-------------------------\n`);
-  // // answeredQuestions = answeredQuestions.forEach(question=>).sort(
-  // //   (a, b) => unAnsweredQuestions[a].timestamp - unAnsweredQuestions[b].timestamp
-  // //   )
-  // //   unAnsweredQuestions = unAnsweredQuestions.sort(
-  // //     (a, b) => unAnsweredQuestions[a].timestamp - unAnsweredQuestions[b].timestamp
-  // //     )
-  //     console.log(`\n-------------------------\n`);
-  //     console.log('answeredQuestions after sorting:', answeredQuestions);
-  //     console.log('unAnsweredQuestions after sorting:', unAnsweredQuestions);
+
+  // b-a => most recent at the top && a-b => most old at the top
+  if (unAnsweredQuestions.length > 1)
+    unAnsweredQuestions.sort((a, b) => b.timestamp - a.timestamp);
+  // b-a => most recent at the top && a-b => most old at the top
+  if (answeredQuestions.length > 1)
+    answeredQuestions.sort((a, b) => b.timestamp - a.timestamp);
   return {
-    answeredQuestions: answeredQuestions.sort(),
-    unAnsweredQuestions: unAnsweredQuestions.sort(),
+    answeredQuestions,
+    unAnsweredQuestions,
     authedUser: authedUser.authedUser,
   };
 };
 
 export default connect(mapStateToProps)(Dashboard);
+
+// console.log(`-------------\nbefore sorting\n---------------`);
+//   console.log(`Questions array is: `, questionsArray);
+//   console.log(`unAnsweredQuestions is: `, unAnsweredQuestions);
+//   console.log(`answeredQuestions is: `, answeredQuestions);
+//   if(unAnsweredQuestions.length!==0) unAnsweredQuestions.sort((a,b)=>unAnsweredQuestions[a].timestamp - unAnsweredQuestions[b].timestamp);
+//   if(answeredQuestions.length!==0) answeredQuestions.sort((a,b)=>answeredQuestions[a].timestamp - answeredQuestions[b].timestamp);
+
+//   // // first get all ids for answeredQuestions
+//   // let answeredQuestionsIds = answeredQuestions.map(({ id }) => id);
+//   // // then sort them as you like
+//   // answeredQuestionsIds.sort(
+//   //   (a, b) => questions[b].timestamp - questions[a].timestamp
+//   // );
+//   // // after that empty the origimal array to store in it the new sorted questions
+//   // answeredQuestions = [];
+//   // answeredQuestionsIds.forEach((id) => {
+//   //   if (!typeof questions[answeredQuestionsIds] === undefined)
+//   //     answeredQuestions.push(questions[answeredQuestionsIds]);
+//   // });
+//   // // first get all ids for uanAnsweredQuestions
+//   // let unAnsweredQuestionsIds = unAnsweredQuestions.map(({ id }) => id);
+//   // // then sort them as you like
+//   // unAnsweredQuestionsIds.sort(
+//   //   (a, b) => questions[b].timestamp - questions[a].timestamp
+//   // );
+//   // // after that empty the origimal array to store in it the new sorted questions
+//   // unAnsweredQuestions = [];
+//   // unAnsweredQuestionsIds.forEach((id) => {
+//   //   if (!typeof questions[unAnsweredQuestionsIds] === undefined)
+//   //     unAnsweredQuestions.push(questions[unAnsweredQuestionsIds]);
+//   // });
+//   console.log(`-------------\nafter sorting\n---------------`);
+//   console.log(`Questions array is: `, questionsArray);
+//   console.log(`unAnsweredQuestions is: `, unAnsweredQuestions);
+//   console.log(`answeredQuestions is: `, answeredQuestions);
