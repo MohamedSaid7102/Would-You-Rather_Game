@@ -10,11 +10,6 @@ export default (state = {}, action) => {
         ...action.users,
       };
     case ADD_QUESTION:
-      console.log(`data received in ADD_QUESTION reducer: `, {
-        'authedUser: ': action.authedUser,
-        'qid: ': action.qid,
-        'answer: ': action.answer,
-      });
       return {
         ...state,
         [action.authedUser]: {

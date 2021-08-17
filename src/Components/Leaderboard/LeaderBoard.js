@@ -11,10 +11,7 @@ class LeaderBoard extends Component {
         Object.keys(b.answers).length -
         (a.questions.length + Object.keys(a.answers).length)
     );
-    console.log('sortedUsers: ', Object.values(sortedUsers));
-    // get number
     return (
-      // {userName, userAvatar, numOfQUAsked, numOfQUAnswered, rank}
       <div className="wrapper">
         <center>
           <h1>Leader Board 🏆</h1>

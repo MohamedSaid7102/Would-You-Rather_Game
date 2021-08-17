@@ -118,19 +118,6 @@ let questions = {
   },
 };
 
-// TODO: Delete
-// export function _didUserAnswer(uid, qid) {
-//   Object.keys(questions).forEach((questionId) => {
-//     if (
-//       questionId === qid &&
-//       (questions[questionId].optionOne.votes.includes(uid) ||
-//         questions[questionId].optionTwo.votes.includes(uid))
-//     )
-//       return true;
-//   });
-//   return false;
-// }
-
 function generateUID() {
   return (
     Math.random().toString(36).substring(2, 15) +
@@ -199,11 +186,6 @@ export function _saveQuestion(question) {
 }
 
 export function _saveQuestionAnswer({ authedUser, qid, answer }) {
-  console.log(`data received in database`, {
-    'authedUser: ': authedUser,
-    'qid: ': qid,
-    'answer: ': answer,
-  });
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -232,40 +214,3 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
     }, 500);
   });
 }
-
-// export function _saveUserAnswer({ authedUser, qid, answer }) {
-//   return new Promise((res, rej) => {
-//     setTimeout(() => {
-//       users = {
-//         ...users,
-//         [authedUser]: {
-//           ...users[authedUser],
-//           answers: {
-//             ...users[authedUser].answers,
-//             [qid]: answer,
-//           },
-//         },
-//       };
-//       res();
-//     }, 500);
-//   });
-// }
-
-// export function _saveQuestionAnswer({ authedUser, qid, answer }) {
-//   return new Promise((res, rej) => {
-//     setTimeout(() => {
-//       questions = {
-//         ...questions,
-//         [qid]: {
-//           ...questions[qid],
-//           [answer]: {
-//             ...questions[qid][answer],
-//             votes: questions[qid][answer].votes.concat([authedUser]),
-//           },
-//         },
-//       };
-
-//       res();
-//     }, 500);
-//   });
-// }

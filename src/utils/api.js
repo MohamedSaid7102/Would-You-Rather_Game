@@ -19,6 +19,5 @@ export const saveQuestion = (info) => {
 };
 
 export const saveQuestionAnswer = (info) => {
-  console.log(`data received in api: `, info);
   return _saveQuestionAnswer(info);
 };

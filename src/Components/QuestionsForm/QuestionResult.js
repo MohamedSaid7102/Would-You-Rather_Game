@@ -89,9 +89,8 @@ class QuestionResult extends Component {
   }
 }
 
-const mapStateToProps = ({ users, authedUser, questions }, { question }) => {
+const mapStateToProps = ({ users, authedUser }, { question }) => {
   return {
-    // userId: users[authedUser.authedUser].id,
     user: users[authedUser.authedUser],
     question,
     questionAuthor: users[question.author],

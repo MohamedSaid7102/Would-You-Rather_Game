@@ -30,10 +30,8 @@ class Login extends Component {
         this.props.location.state !== null &&
         this.props.location.state !== undefined
           ? this.props.location.state.previous.pathname
-          : null;
-      prevRouterPath
-        ? this.props.history.push(prevRouterPath)
-        : this.props.history.push('/');
+          : '/';
+      this.props.history.push(prevRouterPath);
 
       this.setState({
         userName: '',
@@ -42,7 +40,6 @@ class Login extends Component {
     }
   };
   render() {
-    // TODO: add loading effect when login in and the user is authed & show error messege if the user is not authed
     return (
       <div className="wrapper">
         <div className="login-container">

@@ -10,15 +10,15 @@ class Dashboard extends Component {
   // -----------------------------------
   // big ones
   // -----------------------------------
-  // TODO: implement leader board.
   // TODO: implement crete new question.
-  // -----------------------------------
-  // Small ones
-  // -----------------------------------
-  // TODO: Add icons to the pages
-  // TODO: see all other todos.
   // TODO: Revesion the rubrics
-  // TODO: clean up your comments and logs
+  // TODO: push the project 🚀
+  // -----------------------------------
+  // You don't have to but it's good to ❤
+  // -----------------------------------
+  // TODO: destingush betweeet the first top 3 in leader board with a batches and others
+  // TODO: Add icons to the pages
+  // TODO: add loading effect when login in and the user is authed & show error messege if the user is not authed
   state = {
     currentViewedSection: unAnswered,
   };
@@ -121,39 +121,3 @@ const mapStateToProps = ({ questions, authedUser }) => {
 };
 
 export default connect(mapStateToProps)(Dashboard);
-
-// console.log(`-------------\nbefore sorting\n---------------`);
-//   console.log(`Questions array is: `, questionsArray);
-//   console.log(`unAnsweredQuestions is: `, unAnsweredQuestions);
-//   console.log(`answeredQuestions is: `, answeredQuestions);
-//   if(unAnsweredQuestions.length!==0) unAnsweredQuestions.sort((a,b)=>unAnsweredQuestions[a].timestamp - unAnsweredQuestions[b].timestamp);
-//   if(answeredQuestions.length!==0) answeredQuestions.sort((a,b)=>answeredQuestions[a].timestamp - answeredQuestions[b].timestamp);
-
-//   // // first get all ids for answeredQuestions
-//   // let answeredQuestionsIds = answeredQuestions.map(({ id }) => id);
-//   // // then sort them as you like
-//   // answeredQuestionsIds.sort(
-//   //   (a, b) => questions[b].timestamp - questions[a].timestamp
-//   // );
-//   // // after that empty the origimal array to store in it the new sorted questions
-//   // answeredQuestions = [];
-//   // answeredQuestionsIds.forEach((id) => {
-//   //   if (!typeof questions[answeredQuestionsIds] === undefined)
-//   //     answeredQuestions.push(questions[answeredQuestionsIds]);
-//   // });
-//   // // first get all ids for uanAnsweredQuestions
-//   // let unAnsweredQuestionsIds = unAnsweredQuestions.map(({ id }) => id);
-//   // // then sort them as you like
-//   // unAnsweredQuestionsIds.sort(
-//   //   (a, b) => questions[b].timestamp - questions[a].timestamp
-//   // );
-//   // // after that empty the origimal array to store in it the new sorted questions
-//   // unAnsweredQuestions = [];
-//   // unAnsweredQuestionsIds.forEach((id) => {
-//   //   if (!typeof questions[unAnsweredQuestionsIds] === undefined)
-//   //     unAnsweredQuestions.push(questions[unAnsweredQuestionsIds]);
-//   // });
-//   console.log(`-------------\nafter sorting\n---------------`);
-//   console.log(`Questions array is: `, questionsArray);
-//   console.log(`unAnsweredQuestions is: `, unAnsweredQuestions);
-//   console.log(`answeredQuestions is: `, answeredQuestions);

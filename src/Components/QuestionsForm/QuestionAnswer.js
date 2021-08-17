@@ -62,7 +62,6 @@ class QuestionAnswer extends Component {
                   aria-label="gender"
                   name="gender1"
                   value={this.state.answer}
-                  // this.setState({answer: e.target.defaultValue})
                   onChange={(e) => this.setState({ answer: e.target.value })}
                 >
                   <FormControlLabel
@@ -80,7 +79,6 @@ class QuestionAnswer extends Component {
                 </RadioGroup>
                 <Button
                   variant="contained"
-                  // color="secondary"
                   className="btn btn--lg-1_5x btn--accent"
                   type="submit"
                 >
@@ -95,7 +93,7 @@ class QuestionAnswer extends Component {
   }
 }
 
-const mapStateToProps = ({ users, questions }, { question }) => {
+const mapStateToProps = ({ users }, { question }) => {
   return {
     questionAuthor: users[question.author],
     questionId: question.id,

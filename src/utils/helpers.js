@@ -1,4 +1,4 @@
-import { _checkUser, _didUserAnswer } from './_DATA';
+import { _checkUser } from './_DATA';
 
 export function formatDate(timestamp) {
   const d = new Date(timestamp);
@@ -32,7 +32,3 @@ export function formatQuestion({ optionOneText, optionTwoText, author }) {
 export function checkLoginUser(userName, pass) {
   return _checkUser(userName, pass);
 }
-// TODO: Delete
-// export function didUserAnswer(uid, qid) {
-//   return _didUserAnswer(uid, qid);
-// }

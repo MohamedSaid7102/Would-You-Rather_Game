@@ -6,10 +6,9 @@ import { formatDate } from '../../utils/helpers';
 
 class Question extends Component {
   render() {
-    // const { user } = this.props; //incase you need the current user data - don't forget to uncomment the below user
     const authorName = this.props.questionAuthor.name;
     const authorAvatar = this.props.questionAuthor.avatarURL;
-    const { id, optionOne, optionTwo,question } = this.props;
+    const { id, optionOne, optionTwo, question } = this.props;
 
     return (
       <div className="question-card">
@@ -19,9 +18,13 @@ class Question extends Component {
             <img src={authorAvatar} alt={authorName} className="avatar__img" />
           </div>
           <div className="card__info">
-            <h3 className="card__heading">                <span className="time-duration">
-                  {formatDate(question.timestamp)}
-                </span>Would You Rather..</h3>
+            <h3 className="card__heading">
+              {' '}
+              <span className="time-duration">
+                {formatDate(question.timestamp)}
+              </span>
+              Would You Rather..
+            </h3>
             <p className="card__question">
               {optionOne.substring(0, 7)}...
               <br />
@@ -44,14 +47,13 @@ class Question extends Component {
     );
   }
 }
-const mapStateToProps = ({ users, authedUser }, { question }) => {
+const mapStateToProps = ({ users }, { question }) => {
   return {
-    // user: users[authedUser.authedUser],
     questionAuthor: users[question.author],
     optionOne: question.optionOne.text,
     optionTwo: question.optionTwo.text,
     id: question.id,
-    question
+    question,
   };
 };
 export default connect(mapStateToProps)(Question);
