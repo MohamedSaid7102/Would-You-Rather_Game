@@ -3,7 +3,7 @@ import { receiveUsers } from './users';
 import { receiveQuestions } from './questions';
 import { setAuthedUser } from './authedUser';
 
-const AUTHED_ID = 'sarahedo';
+const AUTHED_ID = null;
 
 export const handleInitialData = () => {
   return (dispatch) => {

@@ -46,8 +46,8 @@ class App extends React.Component {
               <React.Fragment>
                 <Nav />
                 <Switch>
-                  <Route exact path="/" component={Dashboard} />
                   <Route exact path="/login" component={Login} />
+                  <PrivateRoute exact path="/" component={Dashboard} />
                   <PrivateRoute
                     exact
                     path="/add"
@@ -63,6 +63,11 @@ class App extends React.Component {
                     path="/question-view/:qid"
                     component={QuestionViewDashboard}
                   />
+                  {
+                    !loggedIn
+                    ? <Redirect to='/login' />
+                    : ''
+                  }
                   <Route render={() => <ErrorPage />} />
                 </Switch>
               </React.Fragment>
