@@ -8,12 +8,6 @@ export const unAnswered = 'unAnswered';
 export const answered = 'answered';
 class Dashboard extends Component {
   // -----------------------------------
-  // big ones
-  // -----------------------------------
-  // TODO: Fix the bug (backend is not updated so user won't be able to navigate to newly created questions or answer them)
-  // TODO: Revesion the rubrics
-  // TODO: push the project 🚀
-  // -----------------------------------
   // You don't have to but it's good to ❤
   // -----------------------------------
   // TODO: destingush betweeet the first top 3 in leader board with a batches and others

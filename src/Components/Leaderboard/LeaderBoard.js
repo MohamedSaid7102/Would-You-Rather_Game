@@ -19,6 +19,7 @@ class LeaderBoard extends Component {
         <div className="leader-board">
           {Object.values(sortedUsers).map((user) => (
             <CompetetorCard
+              key={user.id}
               userName={user.name}
               userAvatar={user.avatarURL}
               numOfQUAsked={user.questions.length}

@@ -17,11 +17,12 @@ import {
 import ErrorPage from './Components/ErrorPage';
 
 let loggedIn = false;
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
-      loggedIn === true ? <Component {...props} /> : <Redirect to="/login" />
+      loggedIn ? <Component {...props} /> : <Redirect to="/login" />
     }
   />
 );
@@ -33,7 +34,7 @@ class App extends React.Component {
 
   render() {
     const { loading, authedUser } = this.props;
-    loggedIn = authedUser !== null;
+    loggedIn = authedUser !== null; // I made this here to listen for the changes every time user changes to null
     return (
       <div className="App">
         <Router>
@@ -63,11 +64,7 @@ class App extends React.Component {
                     path="/question-view/:qid"
                     component={QuestionViewDashboard}
                   />
-                  {
-                    !loggedIn
-                    ? <Redirect to='/login' />
-                    : ''
-                  }
+                  {!loggedIn ? <Redirect to="/login" /> : ''}
                   <Route render={() => <ErrorPage />} />
                 </Switch>
               </React.Fragment>
