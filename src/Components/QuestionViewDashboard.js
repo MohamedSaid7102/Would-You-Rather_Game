@@ -20,11 +20,7 @@ class QuestionViewDashboard extends Component {
       return <QuestionResult question={question} />;
 
     if (!userAnsweredQuestionsIds.includes(qid))
-      return (
-        <QuestionAnswer
-          question={question}
-        />
-      );
+      return <QuestionAnswer question={question} />;
 
     return <div></div>;
   }
