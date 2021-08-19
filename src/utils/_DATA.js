@@ -162,7 +162,6 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
 }
 
 export function _saveQuestion(question) {
-  console.log(`object received to db: `, question);
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
@@ -182,8 +181,6 @@ export function _saveQuestion(question) {
           ]),
         },
       };
-      console.log(`questions Now are: `, questions);
-      console.log(`users Now are: `, users);
       res(formattedQuestion);
     }, 1000);
   });

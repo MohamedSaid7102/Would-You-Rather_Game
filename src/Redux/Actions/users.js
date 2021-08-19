@@ -1,7 +1,8 @@
 import { saveQuestion, saveQuestionAnswer } from '../../utils/api';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const ADD_QUESTION_TO_AUTHED_USER = 'ADD_QUESTION_TO_AUTHED_USER';
-export const SAVE_QUESTION_ANSWER_TO_AUTHED_USER = 'SAVE_QUESTION_ANSWER_TO_AUTHED_USER';
+export const SAVE_QUESTION_ANSWER_TO_AUTHED_USER =
+  'SAVE_QUESTION_ANSWER_TO_AUTHED_USER';
 
 export const receiveUsers = (users) => {
   return {
@@ -30,7 +31,7 @@ const addNewQuestionTouser = (optionOne, optionTwo, user, qid) => {
   };
 };
 // for creating question
-export const handleAddNewQuestionToUser = ({ qid, formattedQuestion }) => {
+export const handleAddNewQuestionToUser = (formattedQuestion) => {
   return (dispatch, getState) => {
     const { authedUser } = getState();
     return saveQuestion({
@@ -40,10 +41,10 @@ export const handleAddNewQuestionToUser = ({ qid, formattedQuestion }) => {
     }).then((res) => {
       return dispatch(
         addNewQuestionTouser(
-          formattedQuestion.optionOne.text,
-          formattedQuestion.optionTwo.text,
-          authedUser.authedUser,
-          qid
+          res.optionOne.text,
+          res.optionTwo.text,
+          res.author,
+          res.qid
         )
       );
     });

@@ -32,7 +32,7 @@ class Question extends Component {
               <br />
               {optionTwo.substring(0, 5)}...
             </p>
-            <Link to={`/question-view/${qid}`}>
+            <Link to={`/questions/${qid}`}>
               <Button
                 variant="contained"
                 color="secondary"

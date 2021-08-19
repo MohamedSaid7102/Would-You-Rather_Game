@@ -61,7 +61,7 @@ class App extends React.Component {
                   />
                   <PrivateRoute
                     exact
-                    path="/question-view/:qid"
+                    path="/questions/:qid"
                     component={QuestionViewDashboard}
                   />
                   {!loggedIn ? <Redirect to="/login" /> : ''}

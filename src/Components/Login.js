@@ -27,9 +27,11 @@ class Login extends Component {
       else this.props.dispatch(setAuthedUser(null));
       // This is to go back where we were before sign in
       let prevRouterPath =
-        this.props.location.state !== null &&
-        this.props.location.state !== undefined
-          ? this.props.location.state.previous.pathname
+        this.props.location.state != null &&
+        this.props.location.state != undefined
+          ? this.props.location.state.previous != undefined
+            ? this.props.location.state.previous.pathname
+            : '/'
           : '/';
       this.props.history.push(prevRouterPath);
 

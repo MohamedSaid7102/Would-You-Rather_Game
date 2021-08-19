@@ -11,12 +11,12 @@ class CreateNewQuestion extends Component {
     questionOne: '',
     questionTwo: '',
   };
+  
   handleAddQuestion = (e) => {
     e.preventDefault();
     const questionOne = this.state.questionOne;
     const questionTwo = this.state.questionTwo;
     const { user, dispatch } = this.props;
-
     if (this.state.questionOne !== '' && this.state.questionTwo !== '') {
       const formattedQuestion = formatQuestion({
         optionOneText: questionOne,
@@ -24,26 +24,16 @@ class CreateNewQuestion extends Component {
         author: user,
       });
 
-      dispatch(handleAddNewQuestionToQuestions({ formattedQuestion })); //add new question to questions
-      dispatch(
-        handleAddNewQuestionToUser({
-          qid: formattedQuestion.qid,
-          formattedQuestion,
-        })
-      ); //add new question to user questions
+      dispatch(handleAddNewQuestionToQuestions(formattedQuestion)); //add new question to questions
+      dispatch(handleAddNewQuestionToUser(formattedQuestion)); //add new question to user questions
 
       // Empty inputs
       this.setState({
         questionOne: '',
         questionTwo: '',
       });
-      // This is to go back where we were before sign in
-      let prevRouterPath =
-        this.props.location.state !== null &&
-        this.props.location.state !== undefined
-          ? this.props.location.state.previous.pathname
-          : '/';
-      this.props.history.push(prevRouterPath);
+
+      this.props.history.push('/');
     }
   };
   render() {

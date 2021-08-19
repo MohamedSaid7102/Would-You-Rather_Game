@@ -29,16 +29,18 @@ const addNewQuestion = (qid, formattedQuestion) => {
   };
 };
 
-export const handleAddNewQuestionToQuestions = ({ qid, formattedQuestion }) => {
+export const handleAddNewQuestionToQuestions = (formattedQuestion) => {
   return (dispatch, getState) => {
     const { authedUser } = getState();
     return saveQuestion({
       optionOneText: formattedQuestion.optionOne.text,
       optionTwoText: formattedQuestion.optionTwo.text,
       author: authedUser.authedUser,
-    }).then((res) => {
-      return dispatch(addNewQuestion(qid, formattedQuestion));
-    });
+    })
+      .then((res) => {
+        return dispatch(addNewQuestion(res.qid, res));
+      })
+      .catch((er) => console.log(`Error happened: `, er));
   };
 };
 
