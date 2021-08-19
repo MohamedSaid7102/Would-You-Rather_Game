@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Avatar } from '@material-ui/core';
 import { BiMenuAltRight } from 'react-icons/bi';
-import { logIn, setAuthedUser } from '../Redux/Actions/authedUser';
+import { logIn, logOut } from '../Redux/Actions/authedUser';
 
 class Nav extends Component {
   state = {
@@ -12,16 +12,19 @@ class Nav extends Component {
   };
 
   handleLog = () => {
-    this.props.authedUser == null
-      ? this.props.dispatch(logIn)
-      : this.props.dispatch(setAuthedUser(null));
+    if (this.props.authedUser == null) this.props.dispatch(logIn);
+    else {
+      this.props.dispatch(logOut());
+      const { history } = this.props;
+      history.push('/');
+    }
   };
 
   render() {
     return (
       <nav className="app-nav">
         <BiMenuAltRight
-          className={`humbrger-icon ${this.state.showNav? 'white':'black'}`}
+          className={`humbrger-icon ${this.state.showNav ? 'white' : 'black'}`}
           onClick={() =>
             this.setState(({ showNav }) => ({
               showNav: showNav ? false : true,
@@ -35,37 +38,29 @@ class Nav extends Component {
           }
         >
           <li>
-            <NavLink to="/" exact id="home" activeClassName="active">
+            <NavLink to="/" exact activeClassName="active">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/add"
-              id="createQuestion"
-              activeClassName="active"
-            >
+            <NavLink exact to="/add" activeClassName="active">
               New Question
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/leaderboard"
-              id="leaderBoard"
-              activeClassName="active"
-            >
+            <NavLink exact to="/leaderboard" activeClassName="active">
               Leader board
             </NavLink>
           </li>
           {this.props.authedUser !== null ? (
             <li className="right" onClick={this.handleLog}>
-              <NavLink to="/login" id="login" activeClassName="active">
+              <NavLink exact to="/login" activeClassName="active">
                 Log out
               </NavLink>
             </li>
           ) : (
             <li className="right" onClick={this.handleLog}>
-              <NavLink to="/login" id="login" activeClassName="active">
+              <NavLink exact to="/login" activeClassName="active">
                 Log In
               </NavLink>
             </li>
@@ -103,4 +98,4 @@ const mapStateToProps = ({ authedUser, users }) => {
   };
 };
 
-export default connect(mapStateToProps)(Nav);
+export default withRouter(connect(mapStateToProps)(Nav));

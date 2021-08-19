@@ -13,7 +13,10 @@ class QuestionViewDashboard extends Component {
 
   render() {
     // 1. userAnsweredQuestionsIds: contains all current authedUser answered questions and it's answers
-    const { qid, question, currentUser } = this.props;
+    const { qid, question, currentUser, history } = this.props;
+    
+    if (!question) history.push('/404');
+
     let userAnsweredQuestionsIds = Object.keys(currentUser.answers);
 
     if (userAnsweredQuestionsIds.includes(qid))

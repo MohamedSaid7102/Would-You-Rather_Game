@@ -8,6 +8,14 @@ import rootReducer from './Redux/Reducers';
 import middleware from './Redux/Middlewares';
 import { BrowserRouter } from 'react-router-dom';
 import { composeWithDevTools } from 'redux-devtools-extension';
+// import { useHistory } from 'react-router-dom';
+// import createBrowserHistory from 'history/lib/createBrowserHistory'
+
+
+// // eslint-disable-next-line react-hooks/rules-of-hooks
+// const history = useHistory(createBrowserHistory)({
+//   basename: '/'
+// });
 
 const store = createStore(rootReducer, composeWithDevTools(middleware));
 

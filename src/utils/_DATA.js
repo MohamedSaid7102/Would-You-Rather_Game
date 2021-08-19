@@ -132,10 +132,10 @@ export function _getUsers() {
 }
 
 export function _checkUser(userName, pass) {
-  for (let user in users)
+  for (let user in users) {
     if (users[user].name === userName && users[user].pass === pass)
       return users[user].id;
-
+  }
   return null;
 }
 
@@ -199,9 +199,6 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
           },
         },
       };
-      console.log(`qid: `, qid);
-      console.log(`questions: `, questions);
-      console.log(`questions[qid]: `, questions[qid]);
       questions = {
         ...questions,
         [qid]: {

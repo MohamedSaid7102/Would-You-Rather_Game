@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { checkLoginUser } from '../utils/helpers';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../Redux/Actions/authedUser';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 class Login extends Component {
   state = {
     userName: '',
     pass: '',
     authed: false,
+    redirectToReferrer: false, //if you are comming from a tap or not
   };
 
   handleSignIn = async (e) => {
@@ -23,27 +24,36 @@ class Login extends Component {
         authed: userCheck != null,
       });
 
-      if (this.state.authed) this.props.dispatch(setAuthedUser(userCheck));
-      else this.props.dispatch(setAuthedUser(null));
-      // This is to go back where we were before sign in
-      let prevRouterPath =
-        this.props.location.state != null &&
-        this.props.location.state != undefined
-          ? this.props.location.state.previous != undefined
-            ? this.props.location.state.previous.pathname
-            : '/'
-          : '/';
-      this.props.history.push(prevRouterPath);
+      if (this.state.authed) {
+        this.props.dispatch(setAuthedUser(userCheck));
+      } else this.props.dispatch(setAuthedUser(null));
 
       this.setState({
         userName: '',
         pass: '',
       });
+      this.setState({ redirectToReferrer: true });
     }
   };
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    if (this.state.redirectToReferrer) {
+      return <Redirect to={from} />;
+    }
+    console.log(
+      `we must go back to: `,
+      this.props.location.state,
+      '\nOr if previous is null: ',
+      { from: { pathname: '/' } },
+      '\n and from now is: ',
+      from,
+      '\n and redirectToReferrer is: ',
+      this.state.redirectToReferrer
+    );
+    // debugger;
     return (
       <div className="wrapper">
+        {console.log('login props are --->: ', this.props)}
         <div className="login-container">
           <h1 className="login__header">Login</h1>
           <form onSubmit={this.handleSignIn}>
